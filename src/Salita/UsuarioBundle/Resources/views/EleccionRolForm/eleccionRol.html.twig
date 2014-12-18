@@ -1,0 +1,23 @@
+{% extends "::base.html.twig" %}
+
+{% block menu %} {% endblock %}
+
+{% block contenido %}
+	<h3>
+	    {% trans %}
+	        usuariobundle.EleccionRolForm.eleccionRol.titulo
+	    {% endtrans %}
+	</h3>
+    <br/>
+    {{ form_start(form) }}
+      {{ form_errors(form) }}
+      <div class="form-group col-sm-12">
+        {{ form_row(form.nombre) }}
+      </div>
+      <div class="form-group col-sm-8">
+        <div class="col-sm-offset-6">
+          {{ form_row(form.asignar) }}
+        </div>
+      </div>
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,16 @@
+body {
+  padding-top: 55px;
+}
+
+.panel {
+  margin-left: 25px;
+  max-width: 380px;
+}
+
+.panel-body {
+  min-height: 130px;
+}
+
+.page-header {
+  text-align: center;
+}

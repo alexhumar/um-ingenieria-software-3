@@ -1,0 +1,17 @@
+Salita\PlanBundle\Entity\MetodoAnticonceptivo:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nombre
+    properties:
+        nombre:
+            - NotBlank:
+                message: 'planbundle.metodoAnticonceptivo.nombre.notBlank'
+            
+Salita\PlanBundle\Entity\PlanProcResp:
+    properties:
+        periodicidad:
+            - NotBlank:
+                message: 'planbundle.planProcResp.periodicidad.notBlank'
+            - Regex:
+                pattern: '/^([0-9])*$/'
+                match:   true
+                message: 'planbundle.planProcResp.periodicidad.regex'

@@ -1,0 +1,24 @@
+{% extends "SalitaPacienteBundle::base.html.twig" %}
+
+{% block contenido %}
+  {% if aplicaciones|length > 0 %}
+    <h3>{% trans %}pacientebundle.aplicacionVacuna.list.titulo{% endtrans %}</h3>
+    <table>
+      <thead>
+          <tr>
+              <th>{% trans %}pacientebundle.aplicacionVacuna.list.tituloTablaVacuna{% endtrans %}</th>
+              <th>{% trans %}pacientebundle.aplicacionVacuna.list.tituloTablaFecha{% endtrans %}</th>
+          </tr>
+      </thead>
+      <tbody>
+        {% for aplicacion in aplicaciones %}
+          <div class="aplicacionVacuna">  
+            <tr><td>{{aplicacion.nombre}}</td><td>{{aplicacion.fecha}}</td></tr>
+          </div>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <h4 id="nota">{% trans %}pacientebundle.aplicacionvacuna.noresultfound.message{% endtrans %}</h4>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,134 @@
+{# Codigo para generar un widget de un form de forma personalizada, con su label y errores incluidos.
+   Se expuso para ser usado globalmente en app/config.yml, bajo la seccion twig. 
+   
+   , { 'label_attr': { 'class': 'control-label' } }
+
+   , { 'attr': { 'class': 'form-control' } }
+   #}
+
+{% block form_start %}
+{% spaceless %}
+    {% set method = method|upper %}
+    {% if method in ["GET", "POST"] %}
+        {% set form_method = method %}
+    {% else %}
+        {% set form_method = "POST" %}
+    {% endif %}
+    {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-horizontal')|trim}) %}
+    {% set attr = attr|merge({'role': (attr.role|default('') ~ ' form')|trim}) %}
+    <form name="{{ form.vars.name }}" method="{{ form_method|lower }}" action="{{ action }}"{% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}{% if multipart %} enctype="multipart/form-data"{% endif %}>
+    {% if form_method != method %}
+        <input type="hidden" name="_method" value="{{ method }}" />
+    {% endif %}
+{% endspaceless %}
+{% endblock form_start %}
+
+{% block form_row %}
+{% spaceless %}
+    {{ form_label(form) }}
+    {{ form_widget(form) }}
+    {{ form_errors(form) }}
+{% endspaceless %}
+{% endblock form_row %}
+
+{% block choice_widget_collapsed %}
+{% spaceless %}
+    {% if required and empty_value is none and not empty_value_in_choices and not multiple %}
+        {% set required = false %}
+    {% endif %}
+    {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control')|trim}) %}
+    <div class="col-sm-6">
+      <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+          {% if empty_value is not none %}
+              <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ empty_value|trans({}, translation_domain) }}</option>
+          {% endif %}
+          {% if preferred_choices|length > 0 %}
+              {% set options = preferred_choices %}
+              {{ block('choice_widget_options') }}
+              {% if choices|length > 0 and separator is not none %}
+                  <option disabled="disabled">{{ separator }}</option>
+              {% endif %}
+          {% endif %}
+          {% set options = choices %}
+          {{ block('choice_widget_options') }}
+      </select>
+    </div>
+{% endspaceless %}
+{% endblock choice_widget_collapsed %}
+
+{% block textarea_widget %}
+{% spaceless %}
+    <div class="col-sm-6">
+      <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+    </div>
+{% endspaceless %}
+{% endblock textarea_widget %}
+
+{% block button_row %}
+{% spaceless %}
+      {{ form_widget(form) }}
+{% endspaceless %}
+{% endblock button_row %}
+
+{% block button_widget %}
+{% spaceless %}
+    {% if label is empty %}
+        {% set label = name|humanize %}
+    {% endif %}
+    {# Si es un submit le agrega las clases btn, btn-primary #}
+    {% if type == 'submit' %}
+      {% set attr = attr|merge({'class': (attr.class|default('') ~ ' btn btn-primary')|trim}) %}
+    {% endif %}
+    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>
+      {{ label|trans({}, translation_domain) }}
+    </button>
+{% endspaceless %}
+{% endblock button_widget %}
+
+{% block form_widget_simple %}
+{% spaceless %}
+    {% set type = type|default('text') %}
+    {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control')|trim}) %}
+    <div class="col-sm-6">
+      <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    </div>
+{% endspaceless %}
+{% endblock form_widget_simple %}
+
+{% block form_label %}
+{% spaceless %}
+    {% if label is not sameas(false) %}
+        {% if not compound %}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {% endif %}
+        {% if required %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {% endif %}
+        {% if label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+        {# Es la unica forma que encontre de agregar las clases control-label y col-sm-12. Si lo hago a traves
+           de label_attr falla.
+         #}
+        {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' control-label col-sm-12')|trim}) %}
+        <div class="col-sm-2">
+          <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+            {{ label|trans({}, translation_domain) }}
+          </label>
+        </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_label %}
+
+{% block form_errors %}
+{% spaceless %}
+    {% if errors|length > 0 %}
+    <div class="col-sm-4 alert alert-danger" role="alert">
+        Errores: 
+        {% for error in errors %}
+            {{ error.message }}
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_errors %}

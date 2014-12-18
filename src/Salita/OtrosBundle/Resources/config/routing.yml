@@ -1,0 +1,59 @@
+#Aca faltaria el alta de pais!!
+#Y el alta de localidad!!
+#Y el alta de partidos!!
+#Y el listado de partidos!!
+#Y la modificacion de partidos!!
+acerca_de:
+    pattern: /acercaDe
+    defaults: { _controller: SalitaOtrosBundle:InfoGral:acercaDe }
+
+alta_barrio:
+    pattern: /alta/barrio
+    defaults: { _controller: salita.otros.controller.barrioform:newAction }
+    
+alta_metodoestudio:
+    pattern: /alta/metodoEstudio
+    defaults: { _controller: SalitaOtrosBundle:MetodoEstudioForm:new }
+    
+barrios_de_localidad:
+    pattern: /barrios/de/localidad
+    defaults: { _controller: SalitaOtrosBundle:Ajax:barriosDeLocalidad }
+    methods: [GET]
+    
+busqueda_diagnostico:
+    pattern: /busqueda/diagnostico
+    defaults: { _controller: SalitaOtrosBundle:Busqueda:buscarDiagnostico }
+    
+busqueda_paciente:
+    pattern: /busqueda/paciente
+    defaults: { _controller: SalitaPacienteBundle:Busqueda:buscar }
+    
+busqueda_vacuna:
+    pattern: /busqueda/vacuna
+    defaults: { _controller: SalitaOtrosBundle:Busqueda:buscar }
+    
+contacto:
+    pattern: /contacto
+    defaults: { _controller: SalitaOtrosBundle:InfoGral:contacto }
+    
+localidades_de_partido:
+    pattern: /localidades/de/partido
+    defaults: { _controller: SalitaOtrosBundle:Ajax:localidadesDePartido }
+    methods: [GET]
+ 
+resultado_operacion:
+    pattern: /resultado/operacion
+    defaults: { _controller: SalitaOtrosBundle:Mensajes:resultado }
+    methods: [GET]
+    
+seleccion_diagnostico:
+    pattern: /seleccion/diagnostico/{idDiagnostico}
+    defaults: { _controller: SalitaOtrosBundle:Diagnostico:seleccionar }
+    requirements:
+        idDiagnostico: \d+
+
+seleccion_vacuna:
+    pattern: /seleccion/vacuna/{idVacuna}
+    defaults: { _controller: SalitaOtrosBundle:Vacuna:seleccionar }
+    requirements:
+        idVacuna: \d+

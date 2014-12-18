@@ -1,0 +1,50 @@
+#messages.es.yml
+planbundle.notFoundException.plan: Plan inexistente
+planbundle.notFoundException.planPaciente: Plan inexistente para el paciente
+planbundle.entregaplan.new.exito: La entrega del plan se registro correctamente
+planbundle.metodoAnticonceptivo.new.exito: El metodo anticonceptivo se cargo exitosamente en el sistema
+planbundle.planpaciente.new.exito: El plan del paciente se agrego exitosamente
+planbundle.planpaciente.modif.exito: El plan del paciente se modifico exitosamente
+planbundle.EntregaPlanProcRespForm.listado.titulo: Entregas de plan procreacion responsable
+planbundle.EntregaPlanProcRespForm.listado.tituloTablaPac: Paciente
+planbundle.EntregaPlanProcRespForm.listado.tituloTablaMet: Método
+planbundle.EntregaPlanProcRespForm.listado.tituloTablaFec: Fecha
+planbundle.EntregaPlanProcRespForm.new.titulo: Registro de entrega (plan procreacion responsable)
+planbundle.EntregaPlanProcRespForm.new.confirm: ¿Confirma el registro de entrega?
+planbundle.MetodoAnticonceptivoForm.new.nombrePlaceholder: Nombre del método anticonceptivo
+planbundle.MetodoAnticonceptivoForm.new.titulo: Alta de metodo anticonceptivo
+planbundle.PlanProcRespForm.listado.titulo: Planes habilitados
+planbundle.PlanProcRespForm.listado.tituloTablaPlan: Plan
+planbundle.PlanProcRespForm.listado.tituloTablaPeriod: Periodicidad
+planbundle.PlanProcRespForm.listado.linkTablaPeriod: Modificar
+planbundle.PlanProcRespForm.listado.linkTablaDeshab: Deshabilitar
+planbundle.PlanProcRespForm.listado.linkTablaRegEnt: Registrar entrega
+planbundle.PlanProcRespForm.listado.linkTablaListEnt: Listar entregas
+planbundle.PlanProcRespForm.listadoDes.titulo: Planes deshabilitados
+planbundle.PlanProcRespForm.listadoDes.tituloTablaPlan: Plan
+planbundle.PlanProcRespForm.listadoDes.tituloTablaPeriod: Periodicidad
+planbundle.PlanProcRespForm.listadoDes.linkTablaHab: Habilitar
+planbundle.PlanProcRespForm.listadoDes.linkTablaListEnt: Listar entregas
+planbundle.PlanProcRespForm.modif.titulo: Modificación de plan procreacion responsable
+planbundle.PlanProcRespForm.modif.periodicidadPlaceholder: Periodicidad de entrega (valor numérico)
+planbundle.PlanProcRespForm.new.titulo: Alta de plan procreacion responsable
+planbundle.PlanProcRespForm.new.periodicidadPlaceholder: Periodicidad de entrega (valor numérico)
+planbundle.PlanProcRespForm.noresultfound.deshab.message: "- No hay planes deshabilitados -"
+planbundle.PlanProcRespForm.noresultfound.message: "- No hay planes habilitados -"
+planbundle.general.noresultfound.message: "- No se han encontrado resultados -"
+planbundle.base.linkMenu: Menu de %nombreRol%
+#Traducciones asociadas a los form types
+form.entregaPlanProcRespType.boton.confirmar: Confirmar registro de entrega
+form.metodoAnticonceptivoType.label.nombre: Nombre
+form.metodoAnticonceptivoType.boton.guardar: Guardar
+form.metodoAnticonceptivoType.boton.guardarYNuevo: Guardar y nuevo
+form.modPlanProcRespType.label.periodicidad: Periodicidad
+form.modPlanProcRespType.boton.modificar: Modificar plan
+form.planProcRespType.label.periodicidad: Periodicidad
+form.planProcRespType.label.metodoAnticonceptivo: Metodo Anticonceptivo
+form.planProcRespType.boton.guardar: Guardar
+form.planProcRespType.boton.guardarYNuevo: Guardar y nuevo
+#Traducciones correspondientes a las validaciones
+planbundle.metodoAnticonceptivo.nombre.notBlank: Complete este campo por favor
+planbundle.planProcResp.periodicidad.notBlank: Complete este campo por favor
+planbundle.planProcResp.periodicidad.regex: La periodicidad debe ser un valor numérico

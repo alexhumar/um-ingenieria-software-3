@@ -1,0 +1,55 @@
+alta_entregaplanprocresp:
+    pattern: /alta/entregaplanprocresp/{idPlan}
+    defaults: { _controller: SalitaPlanBundle:EntregaPlanProcRespForm:new }
+    requirements:
+        idPlan: \d+
+
+alta_metodoanticonceptivo:
+    pattern: /alta/metodoanticonceptivo
+    defaults: { _controller: SalitaPlanBundle:MetodoAnticonceptivoForm:new }
+
+alta_planprocresp:
+    pattern: /alta/planprocresp
+    defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:new }
+    
+deshabilitacion_planprocresp:
+    pattern: /deshabilitacion/planprocresp/{idPlan}
+    defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:deshab }
+    methods: [GET]
+    requirements:
+        idPlan: \d+
+    
+habilitacion_planprocresp:
+    pattern: /habilitacion/planprocresp/{idPlan}
+    defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:hab }
+    methods: [GET]
+    requirements:
+        idPlan: \d+
+        
+listado_entregaplanprocresp:
+    pattern: /listado/entregaplanprocresp/{idPlan}
+    defaults: { _controller: SalitaPlanBundle:EntregaPlanProcRespForm:list }
+    methods: [GET]
+    requirements:
+        idPlan: \d+
+
+listado_planprocresp:
+    pattern: /listado/planprocresp
+    defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:list }
+    methods: [GET]
+
+listadoDes_planprocresp:
+    pattern: /listadoDes/planprocresp
+    defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:listDes }
+    methods: [GET]
+    
+modif_plan:
+    pattern:  /modificacion/planprocresp/{idPlan}
+    defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:modif }
+    requirements:
+        idPlan: \d+
+        
+resultado_operacion_plan:
+    pattern: /resultado/operacion/plan
+    defaults: { _controller: SalitaPlanBundle:Mensajes:resultado }  
+    methods: [GET]

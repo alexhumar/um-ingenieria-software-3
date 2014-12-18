@@ -1,0 +1,84 @@
+alta_aplicacion_vacuna:
+    pattern: /alta/aplicacionvacuna
+    defaults: { _controller: SalitaPacienteBundle:AplicacionVacunaForm:new }
+    methods: [GET]
+    
+alta_consulta:
+    pattern: /alta/consulta
+    defaults: { _controller: SalitaPacienteBundle:ConsultaForm:new }
+    
+alta_estudio:
+    pattern: /alta/estudio
+    defaults: { _controller: SalitaPacienteBundle:EstudioForm:new }
+
+alta_paciente:
+    pattern: /alta/paciente
+    defaults: { _controller: SalitaPacienteBundle:PacienteForm:new }
+    
+busqueda_paciente:
+    pattern: /busqueda/paciente
+    defaults: { _controller: SalitaPacienteBundle:Busqueda:buscar }
+    
+fechas_resumenHC:
+    pattern: /resumenHC/elegirFechas
+    defaults: { _controller: SalitaPacienteBundle:HistoriaClinica:elegirFechas }
+    
+generar_historiaClinica:
+    pattern: /generarHC/paciente
+    defaults: { _controller: SalitaPacienteBundle:HistoriaClinica:generar }
+    methods: [GET]
+
+generar_resumenHC:
+    pattern: /generarResumenHC/paciente
+    defaults: { _controller: SalitaPacienteBundle:HistoriaClinica:resumen }
+    methods: [GET]
+    
+listado_aplicacion_vacuna:
+    pattern: /listado/aplicacionvacuna
+    defaults: { _controller: SalitaPacienteBundle:AplicacionVacunaForm:list }
+    methods: [GET]
+    
+menu_paciente:
+    pattern: /menu/paciente
+    defaults: { _controller: SalitaPacienteBundle:Menu:principal}
+    methods: [GET]
+
+modificacion_datosFiliatorios:
+    pattern: /modificacion/datosfiliatorios
+    defaults: { _controller: SalitaPacienteBundle:PacienteForm:modificarDatosFiliatorios }
+    
+modificacion_observacionesHC:
+    pattern: /modificacion/observacionesHistoriaClinica
+    defaults: { _controller: SalitaPacienteBundle:PacienteForm:modificarObservacionesHC }
+    
+modif_antecedenteFamiliarClinico:
+    pattern:  /modificacion/antecedenteFamiliarClinico
+    defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarClinicoForm:modif }
+
+modif_antecedenteFamiliarObstetrico:
+    pattern:  /modificacion/antecedenteFamiliarObstetrico
+    defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:modif }
+
+modif_antecedentePersonalClinico:
+    pattern:  /modificacion/antecedentePersonalClinico
+    defaults: { _controller: SalitaPacienteBundle:AntecedentePersonalClinicoForm:modif }
+    
+modif_antecedentePersonalObstetrico:
+    pattern:  /modificacion/antecedentePersonalObstetrico
+    defaults: { _controller: SalitaPacienteBundle:AntecedentePersonalObstetricoForm:modif }
+    
+#Esta ruta no esta bien. Lleva al newAction de EstudioFormController. Habria que revisar si se usa la ruta.
+modif_estudio:
+    pattern: /modif/estudio
+    defaults: { _controller: SalitaPacienteBundle:EstudioForm:new }
+
+resultado_operacion_paciente:
+    pattern: /resultado/operacion/paciente
+    defaults: { _controller: SalitaPacienteBundle:Mensajes:resultado }
+    methods: [GET]
+    
+seleccion_paciente:
+    pattern: /seleccion/paciente/{idPaciente}
+    defaults: { _controller: SalitaPacienteBundle:Seleccion:seleccionar}
+    requirements:
+        idPaciente: \d+

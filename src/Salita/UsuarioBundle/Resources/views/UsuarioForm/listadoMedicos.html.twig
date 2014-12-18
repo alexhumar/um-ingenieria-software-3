@@ -1,0 +1,43 @@
+{% extends "::base.html.twig" %}
+
+{% block contenido %}
+  <h3>
+      {% trans %}
+          usuariobundle.UsuarioForm.listadoMedicos.titulo
+      {% endtrans %}
+  </h3>
+  <table id="tabla">
+    <thead>
+        <tr>
+            <th>
+                {% trans %}
+                    usuariobundle.UsuarioForm.listadoMedicos.TituloTablaNomAp
+                {% endtrans %}
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for usuario in usuarios %} 
+        <tr>
+            <td>{{usuario.nombre}} {{usuario.apellido}}</td>
+            <td>
+                <a href="{{ path('modif_usuario', { 'id': usuario.id }) }}">
+                    {% trans %}
+                        usuariobundle.UsuarioForm.listadoMedicos.linkEditar
+                    {% endtrans %}
+                </a>
+            </td>
+            <td>
+                <a href="{{ path('del_medico', { 'id': usuario.id }) }}">
+                    {% trans %}
+                        usuariobundle.UsuarioForm.listadoMedicos.linkBorrar
+                    {% endtrans %}
+                </a>
+            </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends '::base.html.twig' %}
+
+{% block contenido %}
+	{# Ni me gaste en cambiar esto. Si algun dia lo uso, lo hago bien #}
+	<form action="{{ path('modif_partido',{ 'id': id }) }}" method="post" {{ form_enctype(form) }}>
+    	{{ form_widget(form) }}
+    	<input type="submit" />
+	</form>
+{% endblock %}

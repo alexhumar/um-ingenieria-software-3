@@ -1,0 +1,17 @@
+Instalación paso a paso:
+
+Nota: se asume que se cuenta con un entorno Linux, con apache2, intérprete php y gestor de base de datos (preferentemente MySQL) instalado y configurado.
+
+1- Copiar la carpeta completa al DocumentRoot de apache2.
+2- Asignar los permisos correspondientes a todas las carpetas dentro del directorio um, con los siguientes comandos Linux (desde el DocumentRoot de apache2):
+   sudo chown -R [usuario_linux]:www-data um/
+   sudo chmod -R 775 um/
+3- Crear una base de datos en el motor MySQL instalado, preferentemente con nombre unidad_mosconi.
+4- Configurar los parámetros de acceso a la base de datos en el archivo um/app/config/parameters.yml, de acuerdo a la configuración y usuario de la base de datos.
+5- Ejecutar el script ubicado en el directorio um/scripts-instalacion/prepare-database-first-user.sh. En un momento solicitará repetidas veces la contraseña del usuario 
+   administrador de Linux. Nota: ejecutar el script desde el directorio donde reside, para su correcto funcionamiento.
+6- Acceder a la URL: http://localhost/um/web/app_dev.php/es/login
+
+   Es recomendable utilizar el usuario cuyas credenciales son:
+   - Nombre de usuario: pediatra4
+   - Contraseña: pediatra4

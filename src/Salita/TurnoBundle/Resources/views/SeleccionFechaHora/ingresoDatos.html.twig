@@ -1,0 +1,33 @@
+{% extends "SalitaTurnoBundle::base.html.twig" %}
+
+{% block contenido %}
+    <h3>
+        {% trans %}
+            turnobundle.SeleccionFechaHora.ingresoDatos.titulo
+        {% endtrans %}
+    </h3>
+    <br/>
+    {{ form_start(form) }}
+      {{ form_errors(form) }}
+      <div class="form-group col-sm-12">
+        {{ form_row(form.dia) }}
+      </div>
+      <div class="form-group col-sm-12">
+        {{ form_row(form.mes) }}
+      </div>
+      <div class="form-group col-sm-12">
+        {{ form_row(form.anio) }}
+      </div>
+      <div class="form-group col-sm-12">
+        {{ form_row(form.hora) }}
+      </div>
+      <div class="form-group col-sm-12">
+        {{ form_row(form.minutos) }}
+      </div>
+      <div class="form-group col-sm-8">
+        <div class="col-sm-offset-6">
+          {{ form_row(form.seleccionar) }}
+        </div>
+      </div>
+    {{ form_end(form) }}
+{% endblock %}

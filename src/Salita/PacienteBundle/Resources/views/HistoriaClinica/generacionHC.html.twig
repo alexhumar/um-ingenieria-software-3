@@ -1,0 +1,32 @@
+{% extends "SalitaPacienteBundle::base.html.twig" %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/historiaclinica/principal.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block contenido %}
+
+  {{ include('SalitaPacienteBundle:HistoriaClinica:seccionDatosFiliatorios.html.twig') }}
+  
+  {{ include('SalitaPacienteBundle:HistoriaClinica:seccionAntecedentes.html.twig', 
+      { antecedentePC: antecedentePC, antecedentePO: antecedentePO, antecedenteFC: antecedenteFC,
+        antecedenteFO: antecedenteFO }) }}
+
+  {{ include('SalitaPacienteBundle:HistoriaClinica:seccionConsultas.html.twig', 
+     { consultas: consultas, estudios: estudios }) }}
+
+  {{ include('SalitaPacienteBundle:HistoriaClinica:seccionAplicacionesVacunas.html.twig', 
+     { aplicaciones: aplicaciones }) }}
+
+  {% set nomUsuarioGenerador = usuarioGenerador.getNombre() %}
+  {% set apeUsuarioGenerador = usuarioGenerador.getApellido() %}
+  
+  <div class="row">
+	  <h3 class="generadaPor">
+	      {% trans with {'%nombreUsuarioGenerador%': nomUsuarioGenerador, '%apellidoUsuarioGenerador%': apeUsuarioGenerador} %}
+	          pacientebundle.HistoriaClinica.generacionHC.footer
+	      {% endtrans %}
+	  </h3>
+  </div>
+{% endblock %}

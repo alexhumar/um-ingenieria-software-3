@@ -1,0 +1,67 @@
+{# Recibe como parametros: adminexpression, secretariaexpression, medicoexpression, codigoEspecialidad #}
+
+{% set paciente = app.session.get('paciente') %}
+{% set usuario = app.session.get('usuario') %}
+
+{# Si el usuario es secretaria o el medico es obstetra y el paciente no es mujer, no debe mostrarse la parte de antecedentes #}
+{% set muestraAntecedentes = not(is_granted(expression(secretariaexpression)) 
+                   or (usuario.isObstetraSession(codigoEspecialidad) and not(paciente.isMujer()))) %}
+{% if muestraAntecedentes %}
+  <div class="col-sm-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+            {% trans %}
+                pacientebundle.Menu.seccionAntecedentes.panelAntecedentes.titulo
+            {% endtrans %}
+        </h3>
+      </div>
+      <div class="panel-body">
+
+  {% if is_granted(expression(adminexpression)) 
+      or (is_granted(expression(medicoexpression)) and not(usuario.isObstetraSession(codigoEspecialidad))) %}
+        <div>
+            <a href="{{path('modif_antecedentePersonalClinico')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionAntecedentes.panelAntecedentes.modifAntPersClin
+                {% endtrans %}
+            </a>
+        </div>
+  {% endif %}
+
+  {% if (paciente.isMujer() and (is_granted(expression(adminexpression)) 
+       or (is_granted(expression(medicoexpression)) and usuario.isObstetraSession(codigoEspecialidad)))) %}
+        <div>
+            <a href="{{path('modif_antecedentePersonalObstetrico')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionAntecedentes.panelAntecedentes.modifAntPersObs
+                {% endtrans %}
+            </a>
+        </div>
+  {% endif %}
+
+  {% if (is_granted(expression(adminexpression)) 
+        or (is_granted(expression(medicoexpression)) and not(usuario.isObstetraSession(codigoEspecialidad)))) %}
+        <div>
+            <a href="{{path('modif_antecedenteFamiliarClinico')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionAntecedentes.panelAntecedentes.modifAntFamClin
+                {% endtrans %}
+            </a>
+        </div>
+  {% endif %}
+
+  {% if (paciente.isMujer() and (is_granted(expression(adminexpression)) 
+     or (is_granted(expression(medicoexpression)) and usuario.isObstetraSession(codigoEspecialidad)))) %}
+        <div>
+            <a href="{{path('modif_antecedenteFamiliarObstetrico')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionAntecedentes.panelAntecedentes.modifAntFamObs
+                {% endtrans %}
+            </a>
+        </div>
+  {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %} {# endif muestraAntecedentes #}

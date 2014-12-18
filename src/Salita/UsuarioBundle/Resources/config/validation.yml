@@ -1,0 +1,12 @@
+#Validaciones de las clases bajo el directorio Entity
+Salita\UsuarioBundle\Entity\Usuario:
+    properties:
+        nombre:
+            - NotBlank:
+                message: 'usuariobundle.usuario.nombre.notBlank'
+        apellido:
+            - NotBlank:
+                message: 'usuariobundle.usuario.apellido.notBlank'
+        telefono:
+            - NotBlank:
+                message: 'usuariobundle.usuario.telefono.notBlank'

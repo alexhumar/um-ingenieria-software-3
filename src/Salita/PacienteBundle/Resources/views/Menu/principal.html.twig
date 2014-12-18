@@ -1,0 +1,63 @@
+{% extends "SalitaPacienteBundle::base.html.twig" %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/paciente/paciente.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block contenido %}
+   {# ATENCION: si no hago los seteos dentro del block contenido, no funcionan los metodos.
+      NO SE POR QUE PASA ESTO, DEBE SER UNA CUESTION DE CONTEXTO...
+    #}
+
+   {% set rolSeleccionado = app.session.get('rolSeleccionado') %}
+   {% set codigoRolSeleccionadoQuotes = rolSeleccionado.getCodigoWithQuotes() %}
+   {% set adminexpression = 'user and user.isAuthenticatedAdministrador(' ~ codigoRolSeleccionadoQuotes ~ ')' %}
+   {% set medicoexpression = 'user and user.isAuthenticatedMedico(' ~ codigoRolSeleccionadoQuotes ~ ')' %}
+   {% set secretariaexpression = 'user and user.isAuthenticatedSecretaria(' ~ codigoRolSeleccionadoQuotes ~ ')' %}
+   {% if not(app.session.get('especialidad') is empty) %}
+     {% set especialidad = app.session.get('especialidad') %}
+     {% set codigoEspecialidad = especialidad.getCodigo() %}
+   {% else %}
+     {% set codigoEspecialidad = 'NO_TIENE' %}
+   {% endif %}
+   {% set paciente = app.session.get('paciente') %}
+
+   <div class="tituloMenu">
+     <h3>
+         {% trans with { '%nomPaciente%': paciente.nombre, '%apePaciente%': paciente.apellido } %}
+             pacientebundle.Menu.principal.titulo
+         {% endtrans %}
+     </h3>
+   </div>
+   <br>
+
+  {{ include('SalitaPacienteBundle:Menu:seccionDatosFiliatorios.html.twig') }}
+
+  {{ include('SalitaPacienteBundle:Menu:seccionHistoriaClinica.html.twig', 
+     { secretariaexpression: secretariaexpression }) }}
+
+  {{ include('SalitaPacienteBundle:Menu:seccionAntecedentes.html.twig', 
+     { adminexpression: adminexpression, medicoexpression: medicoexpression, 
+       secretariaexpression: secretariaexpression, codigoEspecialidad: codigoEspecialidad }) }}
+
+  {{ include('SalitaPacienteBundle:Menu:seccionTurnos.html.twig', 
+     { medicoexpression: medicoexpression }) }}
+
+  {{ include('SalitaPacienteBundle:Menu:seccionEstudios.html.twig', 
+     { adminexpression: adminexpression, medicoexpression: medicoexpression, 
+       codigoEspecialidad: codigoEspecialidad }) }}
+
+  {{ include('SalitaPacienteBundle:Menu:seccionConsultas.html.twig', 
+     { adminexpression: adminexpression, medicoexpression: medicoexpression, 
+       codigoEspecialidad: codigoEspecialidad }) }}
+
+  {{ include('SalitaPacienteBundle:Menu:seccionVacunacion.html.twig', 
+     { adminexpression: adminexpression, medicoexpression: medicoexpression, 
+       secretariaexpression: secretariaexpression, codigoEspecialidad: codigoEspecialidad }) }}
+
+  {{ include('SalitaPacienteBundle:Menu:seccionPlanProcreacionResponsable.html.twig', 
+     { adminexpression: adminexpression, medicoexpression: medicoexpression, 
+       codigoEspecialidad: codigoEspecialidad }) }}
+
+{% endblock %}

@@ -1,0 +1,34 @@
+#Validaciones de las clases bajo el directorio Clases
+Salita\OtrosBundle\Clases\Busqueda:
+    properties:
+        palabra:
+            - NotBlank:
+                message: 'otrosbundle.validation.busqueda.palabra.notBlank'
+                
+#Validaciones de las clases bajo el directorio Entity
+Salita\OtrosBundle\Entity\Barrio:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nombre
+    properties:
+        nombre:
+            - NotBlank:
+                message: 'otrosbundle.validation.barrio.nombre.notBlank'
+            - Length:
+                min: 5
+                max: 50
+                minMessage: "otrosbundle.validation.barrio.nombre.minMessage"
+                maxMessage: "otrosbundle.validation.barrio.nombre.maxMessage"
+        localidad:
+            - NotNull:
+                message: 'otrosbundle.validation.barrio.localidad.notNull'
+
+Salita\OtrosBundle\Entity\MetodoEstudio:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nombre
+    properties:
+        nombre:
+            - NotBlank:
+                message: 'otrosbundle.validation.metodoEstudio.nombre.notBlank'
+            - Length:
+                max: 50
+                maxMessage: "otrosbundle.validation.metodoEstudio.nombre.maxMessage"

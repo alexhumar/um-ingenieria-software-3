@@ -1,0 +1,27 @@
+{% extends "SalitaPacienteBundle::base.html.twig" %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/historiaclinica/principal.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block contenido %}
+
+  {{ include('SalitaPacienteBundle:HistoriaClinica:seccionDatosFiliatorios.html.twig') }}
+
+  {{ include('SalitaPacienteBundle:HistoriaClinica:seccionConsultas.html.twig', 
+     { consultas: consultas, estudios: estudios }) }}
+     
+  {{ include('SalitaPacienteBundle:HistoriaClinica:seccionObservaciones.html.twig') }}
+
+  {% set nomUsuarioGenerador = usuarioGenerador.getNombre() %}
+  {% set apeUsuarioGenerador = usuarioGenerador.getApellido() %}
+
+  <div class="row">
+	  <h3 class="generadaPor">
+	      {% trans with {'%nombreUsuarioGenerador%': nomUsuarioGenerador, '%apellidoUsuarioGenerador%': apeUsuarioGenerador} %}
+	          pacientebundle.HistoriaClinica.resumenHC.footer
+	      {% endtrans %}
+	  </h3>
+  </div>
+{% endblock %}

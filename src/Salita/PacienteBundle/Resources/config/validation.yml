@@ -1,0 +1,90 @@
+#Validaciones de las clases bajo el directorio Entity
+Salita\PacienteBundle\Entity\Paciente:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nroDoc
+    properties:
+        tipoDocumento:
+            - NotNull: ~
+        nroDoc:
+            - NotBlank: ~
+            - Regex:
+                pattern: '/^([0-9])*$/'
+                match:   true
+                message: 'pacientebundle.paciente.nroDoc.regex'
+        nombre:
+            - NotBlank: ~
+            - Regex:
+                pattern: '/\d/'
+                match:   false
+                message: 'pacientebundle.paciente.nombre.regex'
+        apellido:
+            - NotBlank: ~
+            - Regex:
+                pattern: '/\d/'
+                match:   false
+                message: 'pacientebundle.paciente.apellido.regex'
+        telefonoFijo:
+            - Regex:
+                pattern: '/^([0-9])*$/'
+                match:   true
+                message: 'pacientebundle.paciente.telefonoFijo.regex'
+        telefonoMovil:
+            - Regex:
+                pattern: '/^([0-9])*$/'
+                match:   true
+                message: 'pacientebundle.paciente.telefonoMovil.regex'
+        calle:
+            - NotBlank:
+                message: 'pacientebundle.paciente.calle.notBlank'
+        numero:
+            - NotBlank:
+                message: 'pacientebundle.paciente.numero.notBlank'
+        pais:
+            - NotNull: ~
+        barrio:
+            - NotNull: ~
+        localidad:
+            - NotNull: ~
+        partido:
+            - NotNull: ~
+        sexo:
+            - NotNull: ~
+            
+Salita\PacienteBundle\Entity\AntecedentePersonalObstetrico:
+    properties:
+        gestasPrevias:
+            - Regex:
+                pattern: '/^([0-9])*$/'
+                match:   true
+                message: 'pacientebundle.antecedentePersonalObstetrico.gestasPrevias.regex'
+        abortos:
+            - Regex:
+                pattern: '/^([0-9])*$/'
+                match:   true
+                message: 'pacientebundle.antecedentePersonalObstetrico.abortos.regex'
+        cesareas:
+            - Regex:
+                pattern: '/^([0-9])*$/'
+                match:   true
+                message: 'pacientebundle.antecedentePersonalObstetrico.cesareas.regex'
+        partos:
+            - Regex:
+                pattern: '/^([0-9])*$/'
+                match:   true
+                message: 'pacientebundle.antecedentePersonalObstetrico.partos.regex'
+                
+Salita\PacienteBundle\Entity\Estudio:
+    properties:
+        resultado:
+            - NotBlank:
+                message: 'pacientebundle.estudio.resultado.notBlank'
+        nroProtocolo:
+            - NotBlank:
+                message: 'pacientebundle.estudio.nroProtocolo.notBlank'
+                
+#Validaciones de las clases bajo el directorio Clases
+Salita\PacienteBundle\Clases\Busqueda:
+    properties:
+        palabra:
+            - NotBlank:
+                message: 'pacientebundle.busqueda.palabra.notBlank'

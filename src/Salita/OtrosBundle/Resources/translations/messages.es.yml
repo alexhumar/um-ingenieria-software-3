@@ -1,0 +1,56 @@
+#messages.es.yml
+otrosbundle.barrioForm.new.exito: El barrio se cargo exitosamente en el sistema
+otrosbundle.localidadForm.new.exito: La localidad se cargo exitosamente en el sistema
+otrosbundle.metodoEstudioForm.new.exito: El metodo de estudio se cargo exitosamente en el sistema
+otrosbundle.paisForm.new.exito: El pais se cargo exitosamente en el sistema
+otrosbundle.partidoForm.new.exito: El partido se cargo exitosamente en el sistema
+otrosbundle.partidoForm.modif.exito: El partido fue modificado exitosamente
+otrosbundle.notFoundException.diagnostico: Diagnostico inexistente
+otrosbundle.notFoundException.partido: Partido inexistente
+otrosbundle.notFoundException.vacuna: Vacuna inexistente
+otrosbundle.barrioForm.new.nombrePlaceholder: Ingrese el nombre del barrio
+otrosbundle.barrioForm.new.titulo: Alta de barrio
+otrosbundle.busqueda.ingresoDatos.titulo: Busqueda de vacuna
+otrosbundle.busqueda.ingresoDatos.palabraPlaceholder: Nombre (o parte) de la vacuna
+otrosbundle.busqueda.resultado.titulo: Resultado de la busqueda de vacunas
+otrosbundle.busqueda.resultado.linkSeleccionar: Seleccionar
+otrosbundle.busqueda.resultado.tituloTabla: Vacuna
+otrosbundle.busquedaDiagnostico.ingresoDatos.titulo: Busqueda de diagnostico
+otrosbundle.busquedaDiagnostico.ingresoDatos.palabraPlaceholder: Nombre (o parte) del diagnostico
+otrosbundle.busquedaDiagnostico.resultado.titulo: Resultado de la busqueda de diagnostico
+otrosbundle.busquedaDiagnostico.resultado.linkSeleccionar: Seleccionar
+otrosbundle.busquedaDiagnostico.resultado.tituloTabla: Diagnostico
+otrosbundle.metodoEstudioForm.new.titulo: Alta de metodo de estudio
+otrosbundle.metodoEstudioForm.new.nombrePlaceholder: Nombre del metodo de estudio
+otrosbundle.base.linkMenu: Menu de %nombreRol%
+general.noresultfound.message: "- No se han encontrado resultados -"
+#Traducciones de form types
+form.barrioType.label.nombre: Nombre del barrio
+form.barrioType.label.localidad: Localidad
+form.barrioType.boton.guardar: Guardar
+form.barrioType.boton.guardarYNuevo: Guardar y nuevo
+form.busquedaDiagnosticoType.label.diagnostico: Diagnostico
+form.busquedaDiagnosticoType.boton.buscar: Buscar diagnostico
+form.busquedaType.label.vacuna: Vacuna
+form.busquedaType.boton.buscar: Buscar vacuna
+form.localidadType.label.nombre: Nombre de localidad
+form.localidadType.label.partido: Partido
+form.localidadType.boton.guardar: Guardar
+form.localidadType.boton.guardarYNuevo: Guardar y nuevo
+form.metodoEstudioType.label.nombre: Nombre
+form.metodoEstudioType.boton.guardar: Guardar
+form.metodoEstudioType.boton.guardarYNuevo: Guardar y nuevo
+form.paisType.label.nombre: Nombre del pais
+form.paisType.boton.guardar: Guardar
+form.paisType.boton.guardarYNuevo: Guardar y nuevo
+form.partidoType.label.nombre: Nombre de partido
+form.partidoType.boton.guardar: Guardar
+form.partidoType.boton.guardarYNuevo: Guardar y nuevo
+#Traducciones de validations
+otrosbundle.validation.busqueda.palabra.notBlank: Debe ingresar la palabra de busqueda
+otrosbundle.validation.barrio.nombre.notBlank: Debe ingresar un nombre de barrio 
+otrosbundle.validation.barrio.nombre.minMessage: El nombre no puede contener menos de {{ limit }} letras
+otrosbundle.validation.barrio.nombre.maxMessage: El nombre no puede contener mas de {{ limit }} letras
+otrosbundle.validation.barrio.localidad.notNull: Debe ingresar la localidad a la que pertenece el barrio
+otrosbundle.validation.metodoEstudio.nombre.notBlank: Debe ingresar un nombre para el metodo de estudio
+otrosbundle.validation.metodoEstudio.nombre.maxMessage: El nombre no puede contener mas de {{ limit }} letras

@@ -1,0 +1,50 @@
+#messages.en.yml
+planbundle.notFoundException.plan: Nonexistent plan
+planbundle.notFoundException.planPaciente: Nonexistent plan for patient
+planbundle.entregaplan.new.exito: The delivery of the plan was registered succesfully
+planbundle.metodoAnticonceptivo.new.exito: The contraceptive method has been successfully registered in the system
+planbundle.planpaciente.new.exito: The plan of the patient was successfully added
+planbundle.planpaciente.modif.exito: The plan of the patient was successfully modified
+planbundle.EntregaPlanProcRespForm.listado.titulo: Lead responsible procreation plan
+planbundle.EntregaPlanProcRespForm.listado.tituloTablaPac: Patient
+planbundle.EntregaPlanProcRespForm.listado.tituloTablaMet: Method
+planbundle.EntregaPlanProcRespForm.listado.tituloTablaFec: Date
+planbundle.EntregaPlanProcRespForm.new.titulo: Delivery record (responsible procreation plan)
+planbundle.EntregaPlanProcRespForm.new.confirm: Are you sure the delivery record?
+planbundle.MetodoAnticonceptivoForm.new.nombrePlaceholder: Name of contraceptive method
+planbundle.MetodoAnticonceptivoForm.new.titulo: Registration contraceptive method
+planbundle.PlanProcRespForm.listado.titulo: Enabled plans
+planbundle.PlanProcRespForm.listado.tituloTablaPlan: Plan
+planbundle.PlanProcRespForm.listado.tituloTablaPeriod: Periodicity
+planbundle.PlanProcRespForm.listado.linkTablaPeriod: Change
+planbundle.PlanProcRespForm.listado.linkTablaDeshab: Disable
+planbundle.PlanProcRespForm.listado.linkTablaRegEnt: Place delivery
+planbundle.PlanProcRespForm.listado.linkTablaListEnt: List of deliveries
+planbundle.PlanProcRespForm.listadoDes.titulo: Disabled plans
+planbundle.PlanProcRespForm.listadoDes.tituloTablaPlan: Plan
+planbundle.PlanProcRespForm.listadoDes.tituloTablaPeriod: Periodicity
+planbundle.PlanProcRespForm.listadoDes.linkTablaHab: Enable
+planbundle.PlanProcRespForm.listadoDes.linkTablaListEnt: List of deliveries
+planbundle.PlanProcRespForm.modif.titulo: Modification of responsible procreation plan
+planbundle.PlanProcRespForm.modif.periodicidadPlaceholder: Term of delivery (numerical value)
+planbundle.PlanProcRespForm.new.titulo: Add procreation responsible plan
+planbundle.PlanProcRespForm.new.periodicidadPlaceholder: Term of delivery (numerical value)
+planbundle.PlanProcRespForm.noresultfound.deshab.message: "- No disabled plans -"
+planbundle.PlanProcRespForm.noresultfound.message: "- No enabled plans -"
+planbundle.general.noresultfound.message: "- No results found -"
+planbundle.base.linkMenu: Menu of %nombreRol%
+#Traducciones asociadas a los form types
+form.entregaPlanProcRespType.boton.confirmar: Confirm delivery record
+form.metodoAnticonceptivoType.label.nombre: Name
+form.metodoAnticonceptivoType.boton.guardar: Save
+form.metodoAnticonceptivoType.boton.guardarYNuevo: Save and add
+form.modPlanProcRespType.label.periodicidad: Periodicity
+form.modPlanProcRespType.boton.modificar: Change plan
+form.planProcRespType.label.periodicidad: Periodicity
+form.planProcRespType.label.metodoAnticonceptivo: Contraceptive method
+form.planProcRespType.boton.guardar: Save
+form.planProcRespType.boton.guardarYNuevo: Save and add
+#Traducciones correspondientes a las validaciones
+planbundle.metodoAnticonceptivo.nombre.notBlank: Complete this field please
+planbundle.planProcResp.periodicidad.notBlank: Complete this field please
+planbundle.planProcResp.periodicidad.regex: The frequency must be a numeric value

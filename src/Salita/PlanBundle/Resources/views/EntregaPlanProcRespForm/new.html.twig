@@ -1,0 +1,21 @@
+{% extends "SalitaPlanBundle::base.html.twig" %}
+
+{% block contenido %}
+    <h3>
+        {% trans %}
+            planbundle.EntregaPlanProcRespForm.new.titulo
+        {% endtrans %}
+    </h3>
+    <br/>
+	{% trans %}
+	    planbundle.EntregaPlanProcRespForm.new.confirm
+	{% endtrans %}
+    {{ form_start(form) }}
+      {{ form_errors(form) }}
+      <div class="form-group col-sm-1">
+        <div class="col-sm-offset-1">
+          {{ form_row(form.confirmar) }}
+        </div>
+      </div>
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,28 @@
+{# Recibe como parametros: adminexpression, medicoexpression, codigoEspecialidad #}
+
+{% set usuario = app.session.get('usuario') %}
+
+{# Si el usuario ingreso como administrador, o como medico y, es clinico o pediatra... #}
+{% if (is_granted(expression(adminexpression)) or (is_granted(expression(medicoexpression)) 
+      and (usuario.isClinicoSession(codigoEspecialidad) or usuario.isPediatraSession(codigoEspecialidad)))) %}
+  <div class="col-sm-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+            {% trans %}
+                pacientebundle.Menu.seccionConsultas.panelConsultas.titulo
+            {% endtrans %}
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div>
+            <a href="{{path('alta_consulta')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionConsultas.panelConsultas.regCons
+                {% endtrans %}
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>  
+{% endif %}

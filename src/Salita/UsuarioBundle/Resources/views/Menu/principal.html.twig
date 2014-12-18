@@ -1,0 +1,159 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset( 'css/principal/principal.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block contenido %}
+     {% set usuario = app.session.get('usuario') %}
+     {% set rolSeleccionado = app.session.get('rolSeleccionado') %}
+     {% set codigoRolSeleccionado = rolSeleccionado.getCodigo() %}
+     
+     <div class="tituloMenu">
+       <h3>
+           {% trans with { '%nomUsuario%': usuario.username } %}
+               usuariobundle.Menu.principal.titulo
+           {% endtrans %}
+       </h3>
+     </div>
+     <br>
+
+     {% if usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) %}
+       <div class="col-sm-4">
+         <div class="panel panel-primary">
+           <div class="panel-heading">
+             <h3 class="panel-title">
+                 {% trans %}
+                     usuariobundle.Menu.principal.usuarios.tituloPanel
+                 {% endtrans %}
+             </h3>
+           </div>
+           <div class="panel-body">
+             <div>
+                 <a href="{{path('fos_user_registration_register')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.usuarios.linkAgregar
+                     {% endtrans %}
+                 </a>
+             </div>
+             <div>
+                 <a href="{{path('listado_usuario')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.usuarios.linkAdmRoles
+                     {% endtrans %}
+                 </a>
+             </div>
+             <div>
+                 <a href="{{path('listado_administrador')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.usuarios.linkListAdmins
+                     {% endtrans %}
+                 </a>
+             </div>
+             <div>
+                 <a href="{{path('listado_medico')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.usuarios.linkListMeds
+                     {% endtrans %}
+                 </a>
+             </div>
+             <div>
+                 <a href="{{path('listado_secretaria')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.usuarios.linkListSecs
+                     {% endtrans %}
+                 </a>
+             </div>
+           </div>
+         </div>
+       </div>
+     {% endif %}
+
+       <div class="col-sm-4">
+         <div class="panel panel-primary">
+           <div class="panel-heading">
+             <h3 class="panel-title">
+                 {% trans %}
+                     usuariobundle.Menu.principal.pacientes.tituloPanel
+                 {% endtrans %}
+             </h3>
+           </div>
+           <div class="panel-body">
+             <div>
+                 <a href="{{path('alta_paciente')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.pacientes.linkAltaPaciente
+                     {% endtrans %}
+                 </a>
+             </div>
+           </div>
+         </div>
+       </div>
+
+       <div class="col-sm-4">
+         <div class="panel panel-primary">
+           <div class="panel-heading">
+             <h3 class="panel-title">
+                 {% trans %}
+                     usuariobundle.Menu.principal.barrios.tituloPanel
+                 {% endtrans %}
+             </h3>
+           </div>
+           <div class="panel-body">
+             <div>
+                 <a href="{{path('alta_barrio')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.pacientes.linkAltaBarrio
+                     {% endtrans %}
+                 </a>
+             </div>
+           </div>
+         </div>
+       </div>
+
+     {% if not(usuario.isAuthenticatedSecretaria(codigoRolSeleccionado)) %}
+       <div class="col-sm-4">
+         <div class="panel panel-primary">
+           <div class="panel-heading">
+             <h3 class="panel-title">
+                 {% trans %}
+                     usuariobundle.Menu.principal.estudiosGinecologicos.tituloPanel
+                 {% endtrans %}
+             </h3>
+           </div>
+           <div class="panel-body">
+             <div>
+                 <a href="{{path('alta_metodoestudio')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.pacientes.linkAltaMetEstGin
+                     {% endtrans %}
+                 </a>
+             </div>
+           </div>
+         </div>
+       </div>
+
+       <div class="col-sm-4">
+         <div class="panel panel-primary">
+           <div class="panel-heading">
+             <h3 class="panel-title">
+                 {% trans %}
+                     usuariobundle.Menu.principal.planProcResp.tituloPanel
+                 {% endtrans %}
+             </h3>
+           </div>
+           <div class="panel-body">
+             <div>
+                 <a href="{{path('alta_metodoanticonceptivo')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.planProcResp.linkAltaMetAntic
+                     {% endtrans %}
+                 </a>
+             </div>
+           </div>
+         </div>
+       </div>
+     {% endif %}
+
+{% endblock %}

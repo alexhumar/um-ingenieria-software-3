@@ -1,0 +1,57 @@
+{# 
+   Voy a tener que generar asi cada form para poder customizar el atributo col-sm, que es diferente para cada
+   form.
+ #}
+
+{# 
+   IMPORTANTE: notar el uso de first y second en plainPassword. Esto se debe a que en el RegistrationFormType
+   de FosUserBundle, plainPassword se genera como repeated. Es por eso que para acceder individualmente a cada
+   input que se genera se utiliza el nombre del campo seguido de first o second.
+#}
+  <h3>
+      {% trans %}
+          registration.register_content.titulo
+      {% endtrans %}
+  </h3>
+  </br>
+  {% set emailPlaceholder = 'registration.register_content.form.emailPlaceholder' | trans %}
+  {% set usernamePlaceholder = 'registration.register_content.form.usernamePlaceholder' | trans %}
+  {% set passwordPlaceholder = 'registration.register_content.form.passwordPlaceholder' | trans %}
+  {% set passwordAgainPlaceholder = 'registration.register_content.form.passwordAgainPlaceholder' | trans %}
+  {% set nombrePlaceholder = 'registration.register_content.form.nombrePlaceholder' | trans %}
+  {% set apellidoPlaceholder = 'registration.register_content.form.apellidoPlaceholder' | trans %}
+  {% set telefonoPlaceholder = 'registration.register_content.form.telefonoPlaceholder' | trans %}
+  {% set matriculaPlaceholder = 'registration.register_content.form.matriculaPlaceholder' | trans %}
+  
+  {{ form_start(form) }}
+    {{ form_errors(form) }}
+    <div class="form-group col-sm-12">
+      {{ form_row(form.email, { 'attr': { 'placeholder': emailPlaceholder } }) }}
+    </div>
+    <div class="form-group col-sm-12">
+      {{ form_row(form.username, { 'attr': { 'placeholder': usernamePlaceholder } }) }}
+    </div>
+    <div class="form-group col-sm-12">
+      {{ form_row(form.plainPassword.first, { 'attr': { 'placeholder': passwordPlaceholder } }) }}
+    </div>
+    <div class="form-group col-sm-12">
+      {{ form_row(form.plainPassword.second, { 'attr': { 'placeholder': passwordAgainPlaceholder } }) }}
+    </div>
+    <div class="form-group col-sm-12">
+      {{ form_row(form.nombre, { 'attr': { 'placeholder': nombrePlaceholder } }) }}
+    </div>
+    <div class="form-group col-sm-12">
+      {{ form_row(form.apellido, { 'attr': { 'placeholder': apellidoPlaceholder } }) }}
+    </div>
+    <div class="form-group col-sm-12">
+      {{ form_row(form.telefono, { 'attr': { 'placeholder': telefonoPlaceholder } }) }}
+    </div>
+    <div class="form-group col-sm-12">
+      {{ form_row(form.matricula, { 'attr': { 'placeholder': matriculaPlaceholder } }) }}
+    </div>
+    <div class="form-group col-sm-8">
+      <div class="col-sm-offset-6">
+        {{ form_row(form.registrar) }}
+      </div>
+    </div>
+  {{ form_end(form) }}

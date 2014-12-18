@@ -1,0 +1,38 @@
+parameters:
+    repos_manager.class: Salita\OtrosBundle\Service\ReposManager
+    session_manager.class: Salita\OtrosBundle\Service\SessionManager
+    dialogs_manager.class: Salita\OtrosBundle\Service\DialogsManager
+    queries_manager.class: Salita\OtrosBundle\Service\QueriesManager
+    service.provider.class: Salita\OtrosBundle\Service\ServiceProvider
+    persistence_manager.class: Salita\OtrosBundle\Service\PersistenceManager
+    roles_manager.class: Salita\OtrosBundle\Service\RolesManager
+    salita.otros.controller.barrioform.class: Salita\OtrosBundle\Controller\BarrioFormController
+
+services:
+    repos_manager:
+        class: %repos_manager.class%
+        arguments: [@doctrine.orm.entity_manager]
+    session_manager:
+        class: %session_manager.class%
+        arguments: [@session]
+    dialogs_manager:
+        class: %dialogs_manager.class%
+    queries_manager:
+        class: %queries_manager.class%
+        arguments: [@repos_manager]
+    persistence_manager:
+        class: %persistence_manager.class%
+        arguments: [@repos_manager]
+    roles_manager:
+        class: %roles_manager.class%
+        arguments: [@persistence_manager]
+    service.provider:
+        class: %service.provider.class%
+        arguments: [@service_container]       
+    salita.otros.controller.barrioform:
+        class: %salita.otros.controller.barrioform.class%
+        arguments: [@service.provider]
+
+#    salita_otros.example:
+#        class: %salita_otros.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

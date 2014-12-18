@@ -1,0 +1,46 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/errores.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block contenido %}
+	{# 	Invocando a la funcion form sin argumentos mas que el form, twig asume que el metodo es POST y que
+		el action del form es la misma URL que lo renderizó. Para cambiar estos parametros habria que hacer
+		algo asi:
+
+		form(form, { 'action': path('ruta_deseada'), 'method': GET })
+
+        Por otro lado, si quiero deshabilitar las validaciones de html5 para saltar a los mensajes que defini
+        en validation.yml, deberia generar el form de esta manera:
+
+        {{ form(form, { 'attr': { 'novalidate': 'novalidate' }}) }}
+     #}
+    
+    {% set nombrePlaceholder = 'otrosbundle.barrioForm.new.nombrePlaceholder' | trans %}
+    
+    <h3>{% trans %}otrosbundle.barrioForm.new.titulo{% endtrans %}</h3>
+    <br/>
+    {{ form_start(form) }}
+      {{ form_errors(form) }}
+      <div class="form-group col-sm-12">
+        {{ form_row(form.nombre, { 'attr': { 'placeholder': nombrePlaceholder }}) }}
+      </div>
+      <div class="form-group col-sm-12">
+        {{ form_row(form.localidad) }}
+      </div>
+      <div class="form-group col-sm-6">
+        <div class="col-sm-offset-7">
+          {{ form_row(form.guardar) }}
+          {{ form_row(form.guardarynuevo) }}
+        </div>
+      </div>
+    {{ form_end(form) }}
+
+	{% for flashMessage in app.session.flashbag.get('mensaje') %}
+		<div class="alert alert-success" role="alert">
+			{{ flashMessage }}
+		</div>
+	{% endfor %}
+{% endblock %}
